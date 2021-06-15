@@ -65,7 +65,7 @@ public class Main {
                     }
                     break;
                 case 6:
-                    IOPhoneBook.read();
+                    phoneBookManagement.setList(IOPhoneBook.readFile());
                     break;
                 case 7:
                     IOPhoneBook.write(phoneBookManagement.getList());

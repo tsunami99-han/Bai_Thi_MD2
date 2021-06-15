@@ -24,19 +24,20 @@ public class IOPhoneBook {
             e.printStackTrace();
         }
     }
-    public static List<PhoneBook> read(){
-        List<PhoneBook> list=new ArrayList<>();
+
+    public static List<PhoneBook> readFile() {
+        List<PhoneBook> list = new ArrayList<>();
         try {
-            FileReader fileReader=new FileReader(PATH);
-            BufferedReader bufferedReader=new BufferedReader(fileReader);
-            String content=bufferedReader.readLine();
+            FileReader fileReader = new FileReader(PATH);
+            BufferedReader bufferedReader = new BufferedReader(fileReader);
+            String content = bufferedReader.readLine();
+            while ((content = bufferedReader.readLine()) != null) {
+                String[] values = content.split(",");
+                PhoneBook phoneBook = new PhoneBook(values[0], values[1], values[2], values[3], values[4], values[5], values[6]);
+                list.add(phoneBook);
+            }
             bufferedReader.close();
             fileReader.close();
-            while ((content=bufferedReader.readLine())!=null){
-                String[] values=content.split(",");
-                PhoneBook phoneBook=new PhoneBook(values[0],values[1],values[2],values[3],values[4],values[5],values[6]);
-                list.add(phoneBook);
-            };
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         } catch (IOException e) {

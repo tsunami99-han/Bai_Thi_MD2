@@ -24,6 +24,10 @@ public class PhoneBookManagement implements GerenalManagement<PhoneBook> {
     public void edit(String st) {
     }
 
+    public void setList(List<PhoneBook> list) {
+        this.list = list;
+    }
+
     @Override
     public void delete(String st) {
         scannerPhoneBook.delete(st, list);
